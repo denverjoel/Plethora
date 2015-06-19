@@ -1,6 +1,8 @@
 package com.example.denverjoel.plethora;
 
 import android.app.Activity;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +14,8 @@ public class PlethoraMain extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plethora_main);
+        SQLiteDatabase db = openOrCreateDatabase("PlethoraDB", Context.MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE Categories (ID INTEGER PRIMARY KEY ASC ON CONFLICT ROLLBACKROLLBACK AUTOINCREMENT NOT NULL, Name VARCHAR (25) NOT NULL UNIQUE);");
     }
 
 
